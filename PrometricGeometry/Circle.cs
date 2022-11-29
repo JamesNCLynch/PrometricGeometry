@@ -1,19 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace PrometricGeometry
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class Circle : Shape
     {
         private const decimal Pi = 3.14m;
-        public decimal Radius { get; set; }
-        public static List<Circle> allInstancesOfCircle = new();
+        [JsonPropertyAttribute]
+        private decimal Radius { get; set; }
+        private static List<Circle> allInstancesOfCircle = new();
 
-        public Circle(decimal r) { 
-            Radius = r; 
+        public Circle(decimal r)
+        {
+            Radius = r;
+            allInstancesOfCircle.Add(this);
+        }
+        public Circle()
+        {
             allInstancesOfCircle.Add(this);
         }
 
@@ -31,7 +34,7 @@ namespace PrometricGeometry
         {
             return 2 * Pi * Radius;
         }
-        public override int Count()
+        public static int Count()
         {
             return allInstancesOfCircle.Count;
         }

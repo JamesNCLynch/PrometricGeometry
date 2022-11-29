@@ -30,16 +30,15 @@ shapeList.Add(quadS);
 Console.WriteLine("** Ordering by area!!! ***");
 shapeList.OrderBy(x => x.Area()).ToList().ForEach(y => { Console.WriteLine($"{y.Name()}, {y.Area()}"); });
 
-//Order by perimiter and print
+// Order by perimiter and print
 Console.WriteLine("*** Ordering by perimeter! ***");
 shapeList.OrderBy(x => x.Perimeter()).ToList().ForEach(y => { Console.WriteLine($"{y.Name()}, {y.Area()}"); });
 
 // Save as json
-// System.Text.Json saved empty objects. Just changed to Newtonsoft for a quick fix, but had to make shapes members public
 string json = JsonConvert.SerializeObject(shapeList.ToArray());
 File.WriteAllText($"C:\\Temp\\Shapes{DateTime.Now:yyyyMMddHHmmss}.json", json);
 
-
-Console.WriteLine($"Circles created: {shapeList.Where(c => c.GetType().Name.Equals("Circle")).ToList().Count}");
-Console.WriteLine($"Triangles created: {shapeList.Where(c => c.GetType().Name.Equals("Triangle")).ToList().Count}");
-Console.WriteLine($"Quadrilaterals created: {shapeList.Where(c => c.GetType().Name.Equals("Quadrilateral")).ToList().Count}");
+// Printing count
+Console.WriteLine($"Circles created: {Circle.Count()}");
+Console.WriteLine($"Triangles created: {Triangle.Count()}");
+Console.WriteLine($"Quadrilaterals created: {Quadrilateral.Count()}");

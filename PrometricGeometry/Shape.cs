@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace PrometricGeometry
 {
@@ -13,6 +13,5 @@ namespace PrometricGeometry
         public abstract string Name();
         public abstract decimal Perimeter();
         public abstract decimal Area();
-        public abstract int Count();
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +9,18 @@ namespace PrometricGeometry
 {
     public class Triangle : Shape
     {
-        public decimal SideA { get; set; }
-        public decimal SideB { get; set; }
-        public decimal SideC { get; set; }
-        public decimal Height { get; set; }
-        public decimal Base { get; set; }
+        [JsonPropertyAttribute]
+        private decimal SideA { get; set; }
+        [JsonPropertyAttribute]
+        private decimal SideB { get; set; }
+        [JsonPropertyAttribute]
+        private decimal SideC { get; set; }
+        [JsonPropertyAttribute]
+        private decimal Height { get; set; }
+        [JsonPropertyAttribute]
+        private decimal Base { get; set; }
 
-        public static List<Triangle> allInstancesOfTriangle = new();
+        private static List<Triangle> allInstancesOfTriangle = new();
 
         public Triangle(decimal a, decimal b, decimal c)
         {
@@ -38,6 +44,11 @@ namespace PrometricGeometry
             SideC = c;
             Height = tHeight;
             Base = tBase;
+            allInstancesOfTriangle.Add(this);
+        }
+
+        public Triangle()
+        {
             allInstancesOfTriangle.Add(this);
         }
 
@@ -67,7 +78,7 @@ namespace PrometricGeometry
             return SideA + SideB + SideC;
         }
         
-        public override int Count()
+        public static int Count()
         {
             return allInstancesOfTriangle.Count;   
         }

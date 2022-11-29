@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +9,21 @@ namespace PrometricGeometry
 {
     public class Quadrilateral : Shape
     {
-        public decimal Width { get; set; }
-        public decimal Length { get; set; }
+        [JsonPropertyAttribute]
+        private decimal Width { get; set; }
+        [JsonPropertyAttribute]
+        private decimal Length { get; set; }
 
-        public static List<Quadrilateral> allInstancesOfQuadrilateral = new();
+        private static List<Quadrilateral> allInstancesOfQuadrilateral = new();
 
         public Quadrilateral(decimal width, decimal length)
         {
             Width = width;
             Length = length;
+            allInstancesOfQuadrilateral.Add(this);
+        }
+        public Quadrilateral()
+        {
             allInstancesOfQuadrilateral.Add(this);
         }
         public override decimal Area()
@@ -34,7 +41,7 @@ namespace PrometricGeometry
             return (Width + Length) * 2;
         }
 
-        public override int Count()
+        public static int Count()
         {
             return allInstancesOfQuadrilateral.Count();
         }
