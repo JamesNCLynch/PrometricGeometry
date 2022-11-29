@@ -13,5 +13,6 @@ namespace PrometricGeometry
         public abstract string Name();
         public abstract decimal Perimeter();
         public abstract decimal Area();
+        public abstract int Count();
     }
 }

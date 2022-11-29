@@ -39,4 +39,7 @@ shapeList.OrderBy(x => x.Perimeter()).ToList().ForEach(y => { Console.WriteLine(
 string json = JsonConvert.SerializeObject(shapeList.ToArray());
 File.WriteAllText($"C:\\Temp\\Shapes{DateTime.Now:yyyyMMddHHmmss}.json", json);
 
-//Console.WriteLine($"Circles created: {shapeList.Where(c => c.GetType().Name == "Circle").Count}");
+
+Console.WriteLine($"Circles created: {shapeList.Where(c => c.GetType().Name.Equals("Circle")).ToList().Count}");
+Console.WriteLine($"Triangles created: {shapeList.Where(c => c.GetType().Name.Equals("Triangle")).ToList().Count}");
+Console.WriteLine($"Quadrilaterals created: {shapeList.Where(c => c.GetType().Name.Equals("Quadrilateral")).ToList().Count}");

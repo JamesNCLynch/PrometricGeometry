@@ -14,17 +14,21 @@ namespace PrometricGeometry
         public decimal Height { get; set; }
         public decimal Base { get; set; }
 
+        public static List<Triangle> allInstancesOfTriangle = new();
+
         public Triangle(decimal a, decimal b, decimal c)
         {
             SideA = a;
             SideB = b;
             SideC = c;
+            allInstancesOfTriangle.Add(this);
         }
 
         public Triangle(decimal tHeight, decimal tBase)
         {
             Height = tHeight;
             Base = tBase;
+            allInstancesOfTriangle.Add(this);
         }
 
         public Triangle(decimal a, decimal b, decimal c, decimal tHeight, decimal tBase)
@@ -34,6 +38,7 @@ namespace PrometricGeometry
             SideC = c;
             Height = tHeight;
             Base = tBase;
+            allInstancesOfTriangle.Add(this);
         }
 
         public override decimal Area()
@@ -60,6 +65,11 @@ namespace PrometricGeometry
         public override decimal Perimeter()
         {
             return SideA + SideB + SideC;
+        }
+        
+        public override int Count()
+        {
+            return allInstancesOfTriangle.Count;   
         }
     }
 }
