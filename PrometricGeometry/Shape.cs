@@ -10,8 +10,8 @@ namespace PrometricGeometry
 {
     public abstract class Shape
     {
-        public abstract string Name();
-        public abstract decimal Perimeter();
-        public abstract decimal Area();
+        public abstract string Name { get; }
+        public abstract decimal Perimeter { get; }
+        public abstract decimal Area { get; }
     }
 }

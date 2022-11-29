@@ -2,12 +2,15 @@
 
 namespace PrometricGeometry
 {
-    [JsonObject(MemberSerialization.OptIn)]
     public class Circle : Shape
     {
         private const decimal Pi = 3.14m;
         [JsonPropertyAttribute]
         private decimal Radius { get; set; }
+        public override string Name => GetType().Name;
+        public override decimal Perimeter => 2 * Pi * Radius;
+        public override decimal Area => Pi * Radius * Radius;
+
         private static List<Circle> allInstancesOfCircle = new();
 
         public Circle(decimal r)
@@ -18,21 +21,6 @@ namespace PrometricGeometry
         public Circle()
         {
             allInstancesOfCircle.Add(this);
-        }
-
-        public override decimal Area()
-        {
-            return Pi * Radius * Radius;
-        }
-
-        public override string Name()
-        {
-            return this.GetType().Name;
-        }
-
-        public override decimal Perimeter()
-        {
-            return 2 * Pi * Radius;
         }
         public static int Count()
         {

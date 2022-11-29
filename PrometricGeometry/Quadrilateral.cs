@@ -14,6 +14,12 @@ namespace PrometricGeometry
         [JsonPropertyAttribute]
         private decimal Length { get; set; }
 
+        public override string Name => Width.Equals(Length) ? "Square" : "Rectagle";
+
+        public override decimal Perimeter => (Width + Length) * 2;
+
+        public override decimal Area => Width * Length;
+
         private static List<Quadrilateral> allInstancesOfQuadrilateral = new();
 
         public Quadrilateral(decimal width, decimal length)
@@ -25,20 +31,6 @@ namespace PrometricGeometry
         public Quadrilateral()
         {
             allInstancesOfQuadrilateral.Add(this);
-        }
-        public override decimal Area()
-        {
-            return Width * Length;
-        }
-
-        public override string Name()
-        {
-            return Width.Equals(Length) ? "Square" : "Rectagle";
-        }
-
-        public override decimal Perimeter()
-        {
-            return (Width + Length) * 2;
         }
 
         public static int Count()

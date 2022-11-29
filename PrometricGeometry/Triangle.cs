@@ -20,6 +20,14 @@ namespace PrometricGeometry
         [JsonPropertyAttribute]
         private decimal Base { get; set; }
 
+        public override string Name =>
+            SideA == SideB && SideB == SideC ? "Equilateral" : SideA == SideB || SideA == SideC || SideB == SideC ? "Isosceles" : "Scalene";
+
+
+        public override decimal Perimeter => SideA + SideB + SideC;
+
+        public override decimal Area => Base * Height / 2;
+
         private static List<Triangle> allInstancesOfTriangle = new();
 
         public Triangle(decimal a, decimal b, decimal c)
@@ -52,35 +60,9 @@ namespace PrometricGeometry
             allInstancesOfTriangle.Add(this);
         }
 
-        public override decimal Area()
-        {
-            return Base * Height / 2;
-        }
-
-        public override string Name()
-        {
-            if (SideA == SideB && SideB == SideC)
-            {
-                return "Equilateral";
-            }
-            else if (SideA == SideB || SideA == SideC || SideB == SideC)
-            {
-                return "Isosceles";
-            }
-            else
-            {
-                return "Scalene";
-            }
-        }
-
-        public override decimal Perimeter()
-        {
-            return SideA + SideB + SideC;
-        }
-        
         public static int Count()
         {
-            return allInstancesOfTriangle.Count;   
+            return allInstancesOfTriangle.Count;
         }
     }
 }

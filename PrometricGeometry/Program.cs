@@ -28,14 +28,14 @@ shapeList.Add(quadS);
 
 // Order by area and print
 Console.WriteLine("** Ordering by area!!! ***");
-shapeList.OrderBy(x => x.Area()).ToList().ForEach(y => { Console.WriteLine($"{y.Name()}, {y.Area()}"); });
+shapeList.OrderBy(x => x.Area).ToList().ForEach(y => { Console.WriteLine($"{y.Name}, {y.Area}"); });
 
 // Order by perimiter and print
 Console.WriteLine("*** Ordering by perimeter! ***");
-shapeList.OrderBy(x => x.Perimeter()).ToList().ForEach(y => { Console.WriteLine($"{y.Name()}, {y.Area()}"); });
+shapeList.OrderBy(x => x.Perimeter).ToList().ForEach(y => { Console.WriteLine($"{y.Name}, {y.Area}"); });
 
 // Save as json
-string json = JsonConvert.SerializeObject(shapeList.ToArray());
+string json = JsonConvert.SerializeObject(shapeList.ToArray(), Formatting.Indented);
 File.WriteAllText($"C:\\Temp\\Shapes{DateTime.Now:yyyyMMddHHmmss}.json", json);
 
 // Printing count
