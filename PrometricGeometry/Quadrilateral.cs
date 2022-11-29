@@ -8,8 +8,8 @@ namespace PrometricGeometry
 {
     public class Quadrilateral : Shape
     {
-        private decimal Width { get; set; }
-        private decimal Length { get; set; }
+        public decimal Width { get; set; }
+        public decimal Length { get; set; }
 
         public Quadrilateral(decimal width, decimal length)
         {

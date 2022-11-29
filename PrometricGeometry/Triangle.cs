@@ -8,11 +8,11 @@ namespace PrometricGeometry
 {
     public class Triangle : Shape
     {
-        private decimal SideA { get; set; }
-        private decimal SideB { get; set; }
-        private decimal SideC { get; set; }
-        private decimal Height { get; set; }
-        private decimal Base { get; set; }
+        public decimal SideA { get; set; }
+        public decimal SideB { get; set; }
+        public decimal SideC { get; set; }
+        public decimal Height { get; set; }
+        public decimal Base { get; set; }
 
         public Triangle(decimal a, decimal b, decimal c)
         {

@@ -1,7 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using Newtonsoft.Json;
 using PrometricGeometry;
+using System.Net.Http.Json;
+using System.Xml.Linq;
 
-Console.WriteLine("Hello, World!");
+Console.WriteLine("Hello, Shape World!");
 
 var shapeList = new List<Shape>();
 
@@ -23,4 +26,17 @@ shapeList.Add(triangleS);
 shapeList.Add(quadR);
 shapeList.Add(quadS);
 
+// Order by area and print
+Console.WriteLine("** Ordering by area!!! ***");
 shapeList.OrderBy(x => x.Area()).ToList().ForEach(y => { Console.WriteLine($"{y.Name()}, {y.Area()}"); });
+
+//Order by perimiter and print
+Console.WriteLine("*** Ordering by perimeter! ***");
+shapeList.OrderBy(x => x.Perimeter()).ToList().ForEach(y => { Console.WriteLine($"{y.Name()}, {y.Area()}"); });
+
+// Save as json
+// System.Text.Json saved empty objects. Just changed to Newtonsoft for a quick fix, but had to make shapes members public
+string json = JsonConvert.SerializeObject(shapeList.ToArray());
+File.WriteAllText($"C:\\Temp\\Shapes{DateTime.Now:yyyyMMddHHmmss}.json", json);
+
+//Console.WriteLine($"Circles created: {shapeList.Where(c => c.GetType().Name == "Circle").Count}");
